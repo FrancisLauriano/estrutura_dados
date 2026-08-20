@@ -5,6 +5,7 @@
 // constante
 #define PI 3.14
 #define QTD 1
+#define TAM 3
 
 // struct
 struct Circulo{
@@ -63,6 +64,10 @@ double receberValor(struct Circulo *c){
 
 
 int main(){
+    
+    
+
+    
     double r, areaCirculo, perimetroCirculo;
     struct Circulo *circulo;
 
