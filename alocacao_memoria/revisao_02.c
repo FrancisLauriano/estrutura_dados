@@ -4,18 +4,19 @@
 
 // constante
 #define PI 3.14
-#define QTD 1
-#define TAM 3
 
 // struct
-struct Circulo{
+struct circulo{
     double raio;
 };
 
 
+typedef struct circulo Circulo;
+
+
 // criarCirculo
-struct Circulo *criarCirculo(double r){
-    struct Circulo *circulo = malloc(QTD * sizeof(struct Circulo));
+Circulo *criarCirculo(double r){
+    Circulo *circulo = malloc(sizeof(Circulo));
 
     if(circulo == NULL){
         return NULL;
@@ -27,7 +28,7 @@ struct Circulo *criarCirculo(double r){
 }
 
 // receber raio 
-double receberRaio(struct Circulo *c){
+double receberRaio(Circulo *c){
     double r;
     r = c -> raio;
     return r;
@@ -35,26 +36,28 @@ double receberRaio(struct Circulo *c){
 
 
 // calcularArea
-double calcularArea(struct Circulo *c){
+double calcularArea(Circulo *c){
     double raio = receberRaio(c);
     return PI * (raio * raio);
 }
 
 
 // calcularPerimetro
-double calcularPerimetro(struct Circulo *c){
+double calcularPerimetro(Circulo *c){
     double raio = receberRaio(c);
     return 2 * PI * raio;
 }
 
 // destruirCirculo
-void destruirCirculo(struct Circulo *c){
-    free(c);
+void destruirCirculo(Circulo *c){
+     if(c != NULL){
+        free(c);
+    }
 }
 
 
 // receberValor
-double receberValor(struct Circulo *c){
+double receberValor(Circulo *c){
     double r;
     r = receberRaio(c);
     printf("Informe o raio: ");
@@ -63,13 +66,15 @@ double receberValor(struct Circulo *c){
 }
 
 
+
+
 int main(){
     
     
 
     
     double r, areaCirculo, perimetroCirculo;
-    struct Circulo *circulo;
+    Circulo *circulo;
 
     r = receberValor(circulo);
     circulo = criarCirculo(r);
