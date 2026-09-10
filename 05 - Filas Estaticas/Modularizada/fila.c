@@ -1,7 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-#define TAM 5
+#include "fila.h"
 
 struct fila{
     int dados[TAM];
@@ -10,10 +8,7 @@ struct fila{
     int qtd;
 };
 
-typedef struct fila *Fila;
 
-
-// criar fila
 Fila criar(){
     Fila p = malloc(sizeof(struct fila));
 
@@ -27,9 +22,8 @@ Fila criar(){
 }
 
 
-// enfileirar 
 int enfileirar(Fila p, int valor){
-    if(p == NULL || p -> qtd == TAM){
+    if(p -> qtd == TAM){
         return 0;
     }
 
@@ -41,7 +35,6 @@ int enfileirar(Fila p, int valor){
 }
 
 
-// desenfileirar
 int desenfileirar(Fila p){
     if(p == NULL || p -> qtd == 0){
         return 0;
@@ -51,10 +44,13 @@ int desenfileirar(Fila p){
     p -> qtd -= 1;
 
     return 1;
+
 }
 
-// ver o inicio da fila
-int verInicio(Fila p){
+
+
+
+int acessarInicio(Fila p){
     if(p == NULL || p -> qtd == 0){
         return 0;
     }
@@ -63,9 +59,7 @@ int verInicio(Fila p){
 }
 
 
-// quantidade 
-int quantidade(Fila p){
-
+int tamanho(Fila p){
     if(p == NULL){
         return -1;
     }
@@ -73,38 +67,9 @@ int quantidade(Fila p){
     return p -> qtd;
 }
 
-// destruir fila
+
 void destruir(Fila p){
     if(p != NULL){
         free(p);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
